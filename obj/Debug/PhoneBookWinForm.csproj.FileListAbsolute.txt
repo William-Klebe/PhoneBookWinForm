@@ -1,0 +1,13 @@
+G:\Visual Studio Repo\PhoneBookWinForm\obj\Debug\PhoneBookWinForm.csprojAssemblyReference.cache
+G:\Visual Studio Repo\PhoneBookWinForm\obj\Debug\PhoneBookWinForm.Properties.Resources.resources
+G:\Visual Studio Repo\PhoneBookWinForm\obj\Debug\PhoneBookWinForm.csproj.GenerateResource.cache
+G:\Visual Studio Repo\PhoneBookWinForm\obj\Debug\PhoneBookWinForm.csproj.CoreCompileInputs.cache
+G:\Visual Studio Repo\PhoneBookWinForm\bin\Debug\dbPersonInformation.mdf
+G:\Visual Studio Repo\PhoneBookWinForm\bin\Debug\dbPersonInformation_log.ldf
+G:\Visual Studio Repo\PhoneBookWinForm\bin\Debug\PhoneBookWinForm.exe.config
+G:\Visual Studio Repo\PhoneBookWinForm\bin\Debug\PhoneBookWinForm.exe
+G:\Visual Studio Repo\PhoneBookWinForm\bin\Debug\PhoneBookWinForm.pdb
+G:\Visual Studio Repo\PhoneBookWinForm\obj\Debug\PhoneBookWinForm.Main.resources
+G:\Visual Studio Repo\PhoneBookWinForm\obj\Debug\PhoneBookWinForm.exe
+G:\Visual Studio Repo\PhoneBookWinForm\obj\Debug\PhoneBookWinForm.pdb
+G:\Visual Studio Repo\PhoneBookWinForm\obj\Debug\PhoneBookWinForm.PersonInformation.resources
