@@ -7,8 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
-using System.Data.Sql;
+using System.Data.SqlClient;//Might not need this
+using System.Data.Sql;//or this.
 using PhoneBookWinForm.DataModifiers;
 
 namespace PhoneBookWinForm
@@ -19,6 +19,7 @@ namespace PhoneBookWinForm
         {
             InitializeComponent();
         }
+        //on load do this.
         private void Main_Load(object sender, EventArgs e)
         {
             try
@@ -43,20 +44,28 @@ namespace PhoneBookWinForm
             }
 
         }
-        //click new to generate personInformation.cs form with blank fields
-        private void newToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Handlers.OpenPersonInformationForm();
-        }
-
         //click cell to generate form with row attributes.
         private void dgvPersonInfo_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            //If a row OTHER than the header is selected.
             if (e.RowIndex != -1)
             {
                 int selectedID = Int32.Parse(dgvPersonInfo.CurrentRow.Cells[0].Value.ToString());
                 Handlers.OpenPersonInformationForm(selectedID);
             }
         }
+
+        //use this to prevent accidental closing of Main form
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            Handlers.CloseCancel();
+        }
+
+        //click new to generate personInformation.cs form with blank fields
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Handlers.OpenPersonInformationForm();
+        }
+
     }
 }

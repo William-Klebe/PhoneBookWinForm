@@ -23,16 +23,19 @@ namespace PhoneBookWinForm.DataModifiers
         //"personPhoneNumber as 'Phone Number', " +
         //"personComments as 'Comments' " +
         //"FROM tblPersonInfo";
+        
+        //connection string for SQL. 
+        //Needs updating to be used on any PC
         internal static string SqlConnectionString()
         {
             //connection string and population query
             const string CONNECTIONSTRING = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=G:\Visual Studio Repo\PhoneBookWinForm\dbPersonInformation.mdf;Integrated Security=True";
             return CONNECTIONSTRING;    
-        }         
+        }      
         
+        //Self explainatory, used on the main form to populate data.
         internal static string DGVMainFormDataQuery()
         {
-            //string populateDGV = "SELECT * FROM tblPersonInfo";
             const string MAIN_DGV_FORMDATA = "SELECT personID as 'ID', " +
             "personFirstName as 'First Name'," +
             "personMiddleName as 'Middle Name'," +
@@ -43,16 +46,35 @@ namespace PhoneBookWinForm.DataModifiers
             "FROM tblPersonInfo";
             return MAIN_DGV_FORMDATA;
         }
+        internal static string UpdateString()
+        {
+            const string PERSON_UPDATESTRING = "";
+                  return PERSON_UPDATESTRING;
+        }
+        internal static string InsertString()
+        {
+            const string PERSON_INSERTSTRING = "";
+                  return PERSON_INSERTSTRING;
+        }
+        internal static string DeleteString()
+        {
+            const string PERSON_DELETESTRING = "";
+                  return PERSON_DELETESTRING;
+        }
+
+        //selectedID handler when row is selected on the main form.
         internal static string PersonInformationDataQuery(int selectedID = 0)
         {
             if (selectedID == 0)
             {
+                //throw error if selectedID was null
                 const string message = ("There was an issue with the selected ID");
                 MessageBox.Show(message);
                 return "";
             }
             else
             {
+                //return the string if not null.
                 string PERSON_INFORMATION_QUERY = @"SELECT * FROM tblPersonInfo WHERE personID = " + selectedID;
                 return PERSON_INFORMATION_QUERY;
             }

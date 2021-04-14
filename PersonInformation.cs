@@ -21,13 +21,14 @@ namespace PhoneBookWinForm
         {
             InitializeComponent();
         }
+
         //Grab data if dgvPersonInfo row was clicked
         public PersonInformation(int selectedID)
         {
             InitializeComponent();
 
             //declare connection and command objects for method arguments on load.
-            SqlConnection connection = new SqlConnection(DataStrings.SqlConnectionString());         
+            SqlConnection connection = new SqlConnection(DataStrings.SqlConnectionString());
             SqlCommand command = new SqlCommand(DataStrings.PersonInformationDataQuery(selectedID), connection);
 
             try //try reading the selected data from selectedID query.
@@ -49,13 +50,31 @@ namespace PhoneBookWinForm
                     }
                 }
             }
+            catch
+            {
+                MessageBox.Show("There was an erorr grabbing selectedID data");
+            }
             //close the connection after operation has completed.
-            finally 
-            { 
-                connection.Close(); 
+            finally
+            {
+                connection.Close();
             }
         }
 
+        //If exit, throw a dialog to ensure quitting "Y/N are you sure you want to quit?"
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            Handlers.CloseCancel();
+        }
+
+        //NEEDS UPDATING
+        //These should call a method for handlers, Insert*Update*Delete-Data
+        //
         private void insertToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
