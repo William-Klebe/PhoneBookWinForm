@@ -14,7 +14,10 @@ using System.Data.Sql;
 namespace PhoneBookWinForm
 {
     public partial class PersonInformation : Form
-    {
+    {   
+        //Scope of form used for input validation.
+        List<string> inputData = new List<string>();
+        
         //default form data with no arguements
         public PersonInformation()
         {
@@ -62,10 +65,33 @@ namespace PhoneBookWinForm
         }
 
         //Use this list for inputData from textboxes.
-        List<string> inputData = new List<string>();
-
-
-        //add each textbox to a list, 
+        private void PersonInformation_Load(object sender, System.EventArgs e)
+        {
+            //List for input textboxes
+            List<string> inputData = new List<string>();
+            //Loop and add all control information to a list to pass to ValidateInputData
+            foreach (Control x in this.Controls)
+            {
+                if (x is TextBox || x is MaskedTextBox)
+                {
+                    inputData.Add(x.ToString());
+                }
+            }
+        }
+        
+        //Grab the data from textboxes.
+        private void grabData()
+        {
+            //Loop and add all control information to a list to pass to ValidateInputData
+            foreach (Control x in this.Controls)
+            {
+                if (x is TextBox || x is MaskedTextBox)
+                {
+                    inputData.Add(x.Text.ToString());
+                }
+            }
+        }
+        
         //loop each textbox to a regex 
         //(phone number should only be ints)
         //(email should be email)
@@ -75,19 +101,22 @@ namespace PhoneBookWinForm
         //Save the current form's entry data.
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            grabData();
+            Handlers.ValidateInputData(inputData);
         }
 
         //update "                         "
         private void updateToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            grabData();
+            Handlers.ValidateInputData(inputData);
         }
 
         //delete "                         "
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            grabData();
+            Handlers.ValidateInputData(inputData);
         }
 
         //Secrets.

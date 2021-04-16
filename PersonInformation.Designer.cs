@@ -251,6 +251,7 @@
             this.Name = "PersonInformation";
             this.Text = "PersonInformation";
             this.groupBox1.ResumeLayout(false);
+            this.Load += new System.EventHandler(this.PersonInformation_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

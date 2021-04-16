@@ -45,13 +45,28 @@ namespace PhoneBookWinForm
                 personinformation.ShowDialog();
             }
         }
-
-        //use this to validate entry data on Personal Info form
-        internal static void PersonalInfoFormValidator()
+        internal static bool ValidateInputData(List<String> inputData)
         {
+            bool isAllValidated = false;
+            //run this if all valid
+            foreach(var String in inputData)
+            {
 
+            }
+
+
+
+
+            if (isAllValidated)
+            {
+                isAllValidated = true;
+            }
+            else isAllValidated = false;
+
+            return isAllValidated;
         }
 
+        //prevents accidental closing of main form.
         internal static void CloseCancel()
         {
             const string message = "Are you sure you want to exit?";

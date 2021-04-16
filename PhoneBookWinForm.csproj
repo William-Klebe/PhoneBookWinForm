@@ -63,11 +63,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataModifiers\DeleteData.cs" />
     <Compile Include="DataModifiers\Handlers.cs" />
-    <Compile Include="DataModifiers\InsertData.cs" />
     <Compile Include="DataModifiers\DataStrings.cs" />
-    <Compile Include="DataModifiers\UpdateData.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
