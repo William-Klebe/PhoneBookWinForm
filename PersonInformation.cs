@@ -13,7 +13,6 @@ using System.Data.Sql;
 
 namespace PhoneBookWinForm
 {
-
     public partial class PersonInformation : Form
     {
         //default form data with no arguements
@@ -54,6 +53,7 @@ namespace PhoneBookWinForm
             {
                 MessageBox.Show("There was an erorr grabbing selectedID data");
             }
+
             //close the connection after operation has completed.
             finally
             {
@@ -61,31 +61,40 @@ namespace PhoneBookWinForm
             }
         }
 
-        //If exit, throw a dialog to ensure quitting "Y/N are you sure you want to quit?"
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        //Use this list for inputData from textboxes.
+        List<string> inputData = new List<string>();
+
+
+        //add each textbox to a list, 
+        //loop each textbox to a regex 
+        //(phone number should only be ints)
+        //(email should be email)
+        //all other fields should be plain text.
+        //push list to a SQL command to update/add/delete to DB
+
+        //Save the current form's entry data.
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
 
-        protected override void OnFormClosing(FormClosingEventArgs e)
-        {
-            Handlers.CloseCancel();
-        }
-
-        //NEEDS UPDATING
-        //These should call a method for handlers, Insert*Update*Delete-Data
-        //
-        private void insertToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
+        //update "                         "
         private void updateToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
+
+        //delete "                         "
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
+
+        //Secrets.
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.linkedin.com/in/william-klebe-681344157/");
+        }
+
     }
 }

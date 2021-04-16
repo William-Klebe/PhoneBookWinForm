@@ -48,7 +48,12 @@ namespace PhoneBookWinForm.DataModifiers
         }
         internal static string UpdateString()
         {
-            const string PERSON_UPDATESTRING = "";
+            const string PERSON_UPDATESTRING = "UPDATE dbo.dbPersonInformation SET personFirstName = @personFirstName, " +
+                "personMiddleName = @personMiddleName, " +
+                "personLastName = @personLastName, " +
+                "personEmail = @personEmail, " +
+                "personPhoneNumber = @personPhoneNumber, " +
+                "personComments = @personComments WHERE personID = @personID";
                   return PERSON_UPDATESTRING;
         }
         internal static string InsertString()
