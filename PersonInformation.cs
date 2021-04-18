@@ -67,16 +67,7 @@ namespace PhoneBookWinForm
         //Use this list for inputData from textboxes.
         private void PersonInformation_Load(object sender, System.EventArgs e)
         {
-            //List for input textboxes
-            List<string> inputData = new List<string>();
-            //Loop and add all control information to a list to pass to ValidateInputData
-            foreach (Control x in this.Controls)
-            {
-                if (x is TextBox || x is MaskedTextBox)
-                {
-                    inputData.Add(x.ToString());
-                }
-            }
+
         }
         
         //Grab the data from textboxes.
@@ -88,6 +79,10 @@ namespace PhoneBookWinForm
                 if (x is TextBox || x is MaskedTextBox)
                 {
                     inputData.Add(x.Text.ToString());
+                }
+                if (x is RichTextBox)
+                {
+                    MessageBox.Show(txtPersonalInfo6.Text); 
                 }
             }
         }

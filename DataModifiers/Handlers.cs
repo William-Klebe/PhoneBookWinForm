@@ -51,7 +51,7 @@ namespace PhoneBookWinForm
             //run this if all valid
             foreach(var String in inputData)
             {
-
+                MessageBox.Show(String);
             }
 
 
