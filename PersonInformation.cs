@@ -63,88 +63,56 @@ namespace PhoneBookWinForm
                 connection.Close();
             }
         }
-        
-        //THIS MIGHT NOT BE NEEDED
-        //Grab the data from textboxes.
-        private void grabData(string toolType)
-        {
-            SqlConnection connection = new SqlConnection(DataStrings.SqlConnectionString());
-            SqlCommand command = new SqlCommand(DataStrings.PersonInformationTools(toolType), connection);
-            try
-            {
-                connection.Open();
-                switch (toolType)
-                {
-                    case "insertTool":
-                        
-                        break;
-                    case "updateTool":
-                        MessageBox.Show("Tested here");
-                        command.CommandType = CommandType.StoredProcedure;
-                        //"UPDATE dbo.dbPersonInformation SET personFirstName = @personFirstName, " +
-                        //"personMiddleName = @personMiddleName, " +
-                        //"personLastName = @personLastName, " +
-                        //"personEmail = @personEmail, " +
-                        //"personPhoneNumber = @personPhoneNumber, " +
-                        //"personComments = @personComments WHERE personID = @personID";
-                        MessageBox.Show("here");
-                        command.Parameters.Add(new SqlParameter("@personID",         txtPersonalInfo0.Text));
-                        MessageBox.Show("eeeeehere");
-                        command.Parameters.Add(new SqlParameter("@personFirstName",  txtPersonalInfo1.Text));
-                        command.Parameters.Add(new SqlParameter("@personMiddleName", txtPersonalInfo2.Text));
-                        command.Parameters.Add(new SqlParameter("@personLastName", txtPersonalInfo3.Text));
-                        command.Parameters.Add(new SqlParameter("@personEmail", txtPersonalInfo4.Text));
-                        command.Parameters.Add(new SqlParameter("@personPhoneNumber", txtPersonalInfo5.Text));
-                        command.Parameters.Add(new SqlParameter("@personComments", txtPersonalInfo6.Rtf));
+       
 
-                        MessageBox.Show("eeeeeeeeeeeeeeeeeeeeeeeeeehere");
-                        using(SqlDataReader reader = command.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                MessageBox.Show("ID: " + txtPersonalInfo0.Text + " has been updated.");
-                            }
-                        }
-
-                        break;
-                    case "deleteTool":
-                        
-                        break;
-
-                    default:
-                        MessageBox.Show("No tool was selected");
-                        break;
-                }
-            }
-            catch
-            {
-                MessageBox.Show("There was an erorr grabbing selectedID data");
-            }
-            finally
-            {
-                connection.Close();
-            }
-        }
-
-        //Save the current form's entry data.
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            const string saveTool = "insertTool";
-            grabData(saveTool);
+
         }
 
         //update "                         "
         private void updateToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            const string updateTool = "updateTool";
-            grabData(updateTool);
+            if (!String.IsNullOrEmpty(txtPersonalInfo0.Text))
+            {
+                using (SqlConnection connection = new SqlConnection(DataStrings.SqlConnectionString()))
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = "UPDATE tblPersonInfo SET " +
+                                    "personFirstName = @fn, " +
+                                    "personMiddleName = @mn, " +
+                                    "personLastName = @ln, " +
+                                    "personEmail = @em, " +
+                                    "personPhoneNumber = @pn, " +
+                                    "personComments = @comments WHERE personID = @id";
+
+                    command.Parameters.AddWithValue("@id", txtPersonalInfo0.Text);
+                    command.Parameters.AddWithValue("@fn", txtPersonalInfo1.Text);
+                    command.Parameters.AddWithValue("@mn", txtPersonalInfo2.Text);
+                    command.Parameters.AddWithValue("@ln", txtPersonalInfo3.Text);
+                    command.Parameters.AddWithValue("@em", txtPersonalInfo4.Text);
+                    command.Parameters.AddWithValue("@pn", txtPersonalInfo5.Text);
+                    command.Parameters.AddWithValue("@comments", txtPersonalInfo6.Text);
+
+
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+
+                }
+                MessageBox.Show("Updated");
+            }
+            else
+            {
+                MessageBox.Show("If this is a new entry, you need to use the \"File > Save\" button.", "Incorrect file feature", MessageBoxButtons.OK);
+            }
         }
 
         //delete "                         "
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            const string deleteTool = "deleteTool";
-            grabData(deleteTool);
+
         }
 
         //Secrets.
@@ -152,6 +120,5 @@ namespace PhoneBookWinForm
         {
             System.Diagnostics.Process.Start("https://www.linkedin.com/in/william-klebe-681344157/");
         }
-
     }
 }

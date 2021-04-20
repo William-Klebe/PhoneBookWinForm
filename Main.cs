@@ -67,5 +67,18 @@ namespace PhoneBookWinForm
             Handlers.OpenPersonInformationForm();
         }
 
+        private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataSet personDataSet = new DataSet();
+            personDataSet = Handlers.RetrieveSQLData(personDataSet, DataStrings.SqlConnectionString(), DataStrings.DGVMainFormDataQuery());
+            dgvPersonInfo.DataSource = personDataSet.Tables["Person"];
+
+            //forces columns in dgvPersonInfo to fill
+            for (int i = 0; i < 6; i++)
+            {
+                dgvPersonInfo.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
+            MessageBox.Show("Data refreshed.");
+        }
     }
 }

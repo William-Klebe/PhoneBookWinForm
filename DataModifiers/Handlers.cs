@@ -45,26 +45,7 @@ namespace PhoneBookWinForm
                 personinformation.ShowDialog();
             }
         }
-        internal static bool ValidateInputData(List<String> inputData)
-        {
-            bool isAllValidated = false;
-            //run this if all valid
-            foreach(var String in inputData)
-            {
-                MessageBox.Show(String);
-            }
-
-
-
-
-            if (isAllValidated)
-            {
-                isAllValidated = true;
-            }
-            else isAllValidated = false;
-
-            return isAllValidated;
-        }
+        //Return the text from a RichTextBox
 
         //prevents accidental closing of main form.
         internal static void CloseCancel()

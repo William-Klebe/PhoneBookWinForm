@@ -28,7 +28,7 @@ namespace PhoneBookWinForm.DataModifiers
         //Needs updating to be used on any PC
         internal static string SqlConnectionString()
         {
-            //connection string and population query
+            //connection string
             const string CONNECTIONSTRING = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=G:\Visual Studio Repo\PhoneBookWinForm\dbPersonInformation.mdf;Integrated Security=True";
             return CONNECTIONSTRING;    
         }      
@@ -90,12 +90,7 @@ namespace PhoneBookWinForm.DataModifiers
             switch (toolType)
             {
                 case "updateTool":
-                    queryString = "UPDATE dbo.dbPersonInformation SET personFirstName = @personFirstName, " +
-                "personMiddleName = @personMiddleName, " +
-                "personLastName = @personLastName, " +
-                "personEmail = @personEmail, " +
-                "personPhoneNumber = @personPhoneNumber, " +
-                "personComments = @personComments WHERE personID = @personID";
+                    queryString = "UPDATE tblPersonInfo SET personFirstName = @fn, personMiddleName = @mn, personLastName = @ln, personEmail = @em, personPhoneNumber = @pn, personComments = @comments WHERE personID = @id";
                     break;
                 case "":
                     break;
