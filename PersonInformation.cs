@@ -63,55 +63,88 @@ namespace PhoneBookWinForm
                 connection.Close();
             }
         }
-
-        //Use this list for inputData from textboxes.
-        private void PersonInformation_Load(object sender, System.EventArgs e)
-        {
-
-        }
         
+        //THIS MIGHT NOT BE NEEDED
         //Grab the data from textboxes.
-        private void grabData()
+        private void grabData(string toolType)
         {
-            //Loop and add all control information to a list to pass to ValidateInputData
-            foreach (Control x in this.Controls)
+            SqlConnection connection = new SqlConnection(DataStrings.SqlConnectionString());
+            SqlCommand command = new SqlCommand(DataStrings.PersonInformationTools(toolType), connection);
+            try
             {
-                if (x is TextBox || x is MaskedTextBox)
+                connection.Open();
+                switch (toolType)
                 {
-                    inputData.Add(x.Text.ToString());
-                }
-                if (x is RichTextBox)
-                {
-                    MessageBox.Show(txtPersonalInfo6.Text); 
+                    case "insertTool":
+                        
+                        break;
+                    case "updateTool":
+                        MessageBox.Show("Tested here");
+                        command.CommandType = CommandType.StoredProcedure;
+                        //"UPDATE dbo.dbPersonInformation SET personFirstName = @personFirstName, " +
+                        //"personMiddleName = @personMiddleName, " +
+                        //"personLastName = @personLastName, " +
+                        //"personEmail = @personEmail, " +
+                        //"personPhoneNumber = @personPhoneNumber, " +
+                        //"personComments = @personComments WHERE personID = @personID";
+                        MessageBox.Show("here");
+                        command.Parameters.Add(new SqlParameter("@personID",         txtPersonalInfo0.Text));
+                        MessageBox.Show("eeeeehere");
+                        command.Parameters.Add(new SqlParameter("@personFirstName",  txtPersonalInfo1.Text));
+                        command.Parameters.Add(new SqlParameter("@personMiddleName", txtPersonalInfo2.Text));
+                        command.Parameters.Add(new SqlParameter("@personLastName", txtPersonalInfo3.Text));
+                        command.Parameters.Add(new SqlParameter("@personEmail", txtPersonalInfo4.Text));
+                        command.Parameters.Add(new SqlParameter("@personPhoneNumber", txtPersonalInfo5.Text));
+                        command.Parameters.Add(new SqlParameter("@personComments", txtPersonalInfo6.Rtf));
+
+                        MessageBox.Show("eeeeeeeeeeeeeeeeeeeeeeeeeehere");
+                        using(SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                MessageBox.Show("ID: " + txtPersonalInfo0.Text + " has been updated.");
+                            }
+                        }
+
+                        break;
+                    case "deleteTool":
+                        
+                        break;
+
+                    default:
+                        MessageBox.Show("No tool was selected");
+                        break;
                 }
             }
+            catch
+            {
+                MessageBox.Show("There was an erorr grabbing selectedID data");
+            }
+            finally
+            {
+                connection.Close();
+            }
         }
-        
-        //loop each textbox to a regex 
-        //(phone number should only be ints)
-        //(email should be email)
-        //all other fields should be plain text.
-        //push list to a SQL command to update/add/delete to DB
 
         //Save the current form's entry data.
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            grabData();
-            Handlers.ValidateInputData(inputData);
+            const string saveTool = "insertTool";
+            grabData(saveTool);
         }
 
         //update "                         "
         private void updateToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            grabData();
-            Handlers.ValidateInputData(inputData);
+            const string updateTool = "updateTool";
+            grabData(updateTool);
         }
 
         //delete "                         "
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            grabData();
-            Handlers.ValidateInputData(inputData);
+            const string deleteTool = "deleteTool";
+            grabData(deleteTool);
         }
 
         //Secrets.

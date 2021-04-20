@@ -84,6 +84,29 @@ namespace PhoneBookWinForm.DataModifiers
                 return PERSON_INFORMATION_QUERY;
             }
         }
+        internal static string PersonInformationTools(string toolType)
+        {
+            string queryString = "";
+            switch (toolType)
+            {
+                case "updateTool":
+                    queryString = "UPDATE dbo.dbPersonInformation SET personFirstName = @personFirstName, " +
+                "personMiddleName = @personMiddleName, " +
+                "personLastName = @personLastName, " +
+                "personEmail = @personEmail, " +
+                "personPhoneNumber = @personPhoneNumber, " +
+                "personComments = @personComments WHERE personID = @personID";
+                    break;
+                case "":
+                    break;
+                case "uwu":
+                    break;
+                default: MessageBox.Show("There was an error with the SQL query string selector");
+                    break;
+            }
+
+            return queryString;
+        }
 
     }
 }
