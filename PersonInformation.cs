@@ -14,10 +14,7 @@ using System.Data.Sql;
 namespace PhoneBookWinForm
 {
     public partial class PersonInformation : Form
-    {   
-        //Scope of form used for input validation.
-        List<string> inputData = new List<string>();
-        
+    {           
         //default form data with no arguements
         public PersonInformation()
         {
@@ -37,7 +34,7 @@ namespace PhoneBookWinForm
             {
                 connection.Open();
                 //Use the person reader to execute the query command.
-                using (SqlDataReader personReader = command.ExecuteReader())
+                using SqlDataReader personReader = command.ExecuteReader();
                 {
                     while (personReader.Read())
                     {
@@ -65,13 +62,45 @@ namespace PhoneBookWinForm
         }
        
 
+#pragma warning disable IDE1006 // Naming Styles
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+#pragma warning restore IDE1006 // Naming Styles
         {
+            if (String.IsNullOrEmpty(txtPersonalInfo0.Text))
+            {
+                using (SqlConnection connection = new SqlConnection(DataStrings.SqlConnectionString()))
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = "INSERT INTO tblPersonInfo (personFirstName, personMiddleName, personLastName, personEmail, personPhoneNumber, personComments)" +
+                        "VALUES (@fn, @mn, @ln, @em, @pn, @comments)";
 
+                    //command.Parameters.AddWithValue("@id", txtPersonalInfo0.Text);
+                    command.Parameters.AddWithValue("@fn", txtPersonalInfo1.Text);
+                    command.Parameters.AddWithValue("@mn", txtPersonalInfo2.Text);
+                    command.Parameters.AddWithValue("@ln", txtPersonalInfo3.Text);
+                    command.Parameters.AddWithValue("@em", txtPersonalInfo4.Text);
+                    command.Parameters.AddWithValue("@pn", txtPersonalInfo5.Text);
+                    command.Parameters.AddWithValue("@comments", txtPersonalInfo6.Text);
+
+
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+
+                }
+                MessageBox.Show("Added", "Person Information", MessageBoxButtons.OK);
+            }
+            else
+            {
+                //MessageBox.Show("If this is a new entry, you need to use the \"File > Save\" button.", "Incorrect file feature", MessageBoxButtons.OK);
+            }
         }
 
         //update "                         "
+#pragma warning disable IDE1006 // Naming Styles
         private void updateToolStripMenuItem_Click(object sender, EventArgs e)
+#pragma warning restore IDE1006 // Naming Styles
         {
             if (!String.IsNullOrEmpty(txtPersonalInfo0.Text))
             {
@@ -101,7 +130,7 @@ namespace PhoneBookWinForm
                     connection.Close();
 
                 }
-                MessageBox.Show("Updated");
+                MessageBox.Show("Updated", "Person Information", MessageBoxButtons.OK);
             }
             else
             {
@@ -110,13 +139,37 @@ namespace PhoneBookWinForm
         }
 
         //delete "                         "
+#pragma warning disable IDE1006 // Naming Styles
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+#pragma warning restore IDE1006 // Naming Styles
         {
+            if (!String.IsNullOrEmpty(txtPersonalInfo0.Text))
+            {
+                using (SqlConnection connection = new SqlConnection(DataStrings.SqlConnectionString()))
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = "DELETE FROM tblPersonInfo WHERE personID = @id";
 
+                    command.Parameters.AddWithValue("@id", txtPersonalInfo0.Text);
+
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+
+                }
+                MessageBox.Show("Deleted", "Person Information", MessageBoxButtons.OK);
+            }
+            else
+            {
+                //MessageBox.Show("If this is a new entry, you need to use the \"File > Save\" button.", "Incorrect file feature", MessageBoxButtons.OK);
+            }
         }
 
         //Secrets.
+#pragma warning disable IDE1006 // Naming Styles
         private void pictureBox1_Click(object sender, EventArgs e)
+#pragma warning restore IDE1006 // Naming Styles
         {
             System.Diagnostics.Process.Start("https://www.linkedin.com/in/william-klebe-681344157/");
         }

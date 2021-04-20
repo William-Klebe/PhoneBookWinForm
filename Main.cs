@@ -34,6 +34,7 @@ namespace PhoneBookWinForm
                 {
                     dgvPersonInfo.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 }
+                dgvPersonInfo.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
 
                 MessageBox.Show("Connection successful.");
             }
@@ -45,7 +46,9 @@ namespace PhoneBookWinForm
 
         }
         //click cell to generate form with row attributes.
+#pragma warning disable IDE1006 // Naming Styles
         private void dgvPersonInfo_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+#pragma warning restore IDE1006 // Naming Styles
         {
             //If a row OTHER than the header is selected.
             if (e.RowIndex != -1)
@@ -62,12 +65,16 @@ namespace PhoneBookWinForm
         }
 
         //click new to generate personInformation.cs form with blank fields
+#pragma warning disable IDE1006 // Naming Styles
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
+#pragma warning restore IDE1006 // Naming Styles
         {
             Handlers.OpenPersonInformationForm();
         }
 
+#pragma warning disable IDE1006 // Naming Styles
         private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
+#pragma warning restore IDE1006 // Naming Styles
         {
             DataSet personDataSet = new DataSet();
             personDataSet = Handlers.RetrieveSQLData(personDataSet, DataStrings.SqlConnectionString(), DataStrings.DGVMainFormDataQuery());
@@ -78,7 +85,7 @@ namespace PhoneBookWinForm
             {
                 dgvPersonInfo.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
-            MessageBox.Show("Data refreshed.");
+            MessageBox.Show("Data refreshed.", "Person Information", MessageBoxButtons.OK);
         }
     }
 }

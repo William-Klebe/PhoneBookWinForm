@@ -16,14 +16,12 @@ namespace PhoneBookWinForm
         //retrieves all sql data from DB
         internal static DataSet RetrieveSQLData(DataSet dataset, string connectionString, string queryString)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                SqlDataAdapter adapter = new SqlDataAdapter(queryString, connection);
-                adapter.Fill(dataset, "Person");
-                connection.Close();
-                return dataset;
-            }
+            using SqlConnection connection = new SqlConnection(connectionString);
+            SqlDataAdapter adapter = new SqlDataAdapter(queryString, connection);
+            connection.Open();
+            adapter.Fill(dataset, "Person");
+            connection.Close();
+            return dataset;
         }
 
         //Dictates what type of Persona Information form should be open
@@ -48,13 +46,21 @@ namespace PhoneBookWinForm
         //Return the text from a RichTextBox
 
         //prevents accidental closing of main form.
+        //This is dumb broken right now.
         internal static void CloseCancel()
         {
             const string message = "Are you sure you want to exit?";
             const string caption = "Exit form";
             var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            if (result == DialogResult.Yes) Environment.Exit(0);
+            if (result == DialogResult.Yes)
+            {
+                Environment.Exit(0);
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }
