@@ -32,7 +32,6 @@ namespace PhoneBookWinForm.DataModifiers
             const string CONNECTIONSTRING = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=G:\Visual Studio Repo\PhoneBookWinForm\dbPersonInformation.mdf;Integrated Security=True";
             return CONNECTIONSTRING;    
         }      
-        
         //Self explainatory, used on the main form to populate data.
         internal static string DGVMainFormDataQuery()
         {
@@ -46,6 +45,7 @@ namespace PhoneBookWinForm.DataModifiers
             "FROM tblPersonInfo";
             return MAIN_DGV_FORMDATA;
         }
+        //These need working, will be tied into handlers and personinformation form
         internal static string UpdateString()
         {
             const string PERSON_UPDATESTRING = "UPDATE dbo.dbPersonInformation SET personFirstName = @personFirstName, " +
@@ -66,7 +66,6 @@ namespace PhoneBookWinForm.DataModifiers
             const string PERSON_DELETESTRING = "";
                   return PERSON_DELETESTRING;
         }
-
         //selectedID handler when row is selected on the main form.
         internal static string PersonInformationDataQuery(int selectedID = 0)
         {
