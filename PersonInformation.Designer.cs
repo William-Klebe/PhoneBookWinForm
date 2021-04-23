@@ -57,21 +57,21 @@
             this.txtPersonalInfo1.Location = new System.Drawing.Point(100, 59);
             this.txtPersonalInfo1.Name = "txtPersonalInfo1";
             this.txtPersonalInfo1.Size = new System.Drawing.Size(100, 20);
-            this.txtPersonalInfo1.TabIndex = 0;
+            this.txtPersonalInfo1.TabIndex = 1;
             // 
             // txtPersonalInfo2
             // 
             this.txtPersonalInfo2.Location = new System.Drawing.Point(100, 85);
             this.txtPersonalInfo2.Name = "txtPersonalInfo2";
             this.txtPersonalInfo2.Size = new System.Drawing.Size(100, 20);
-            this.txtPersonalInfo2.TabIndex = 1;
+            this.txtPersonalInfo2.TabIndex = 2;
             // 
             // txtPersonalInfo3
             // 
             this.txtPersonalInfo3.Location = new System.Drawing.Point(100, 111);
             this.txtPersonalInfo3.Name = "txtPersonalInfo3";
             this.txtPersonalInfo3.Size = new System.Drawing.Size(100, 20);
-            this.txtPersonalInfo3.TabIndex = 2;
+            this.txtPersonalInfo3.TabIndex = 3;
             // 
             // txtPersonalInfo0
             // 
@@ -79,7 +79,7 @@
             this.txtPersonalInfo0.Name = "txtPersonalInfo0";
             this.txtPersonalInfo0.ReadOnly = true;
             this.txtPersonalInfo0.Size = new System.Drawing.Size(100, 20);
-            this.txtPersonalInfo0.TabIndex = 3;
+            this.txtPersonalInfo0.TabIndex = 0;
             // 
             // txtPersonalInfo4
             // 
@@ -104,7 +104,7 @@
             this.txtPersonalInfo6.Location = new System.Drawing.Point(6, 19);
             this.txtPersonalInfo6.Name = "txtPersonalInfo6";
             this.txtPersonalInfo6.Size = new System.Drawing.Size(504, 134);
-            this.txtPersonalInfo6.TabIndex = 6;
+            this.txtPersonalInfo6.TabIndex = 0;
             this.txtPersonalInfo6.Text = "";
             // 
             // label1

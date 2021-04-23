@@ -23,7 +23,7 @@ namespace PhoneBookWinForm.DataModifiers
         //"personPhoneNumber as 'Phone Number', " +
         //"personComments as 'Comments' " +
         //"FROM tblPersonInfo";
-        
+
         //connection string for SQL. 
         //Needs updating to be used on any PC
         internal static string SqlConnectionString()
@@ -98,9 +98,7 @@ namespace PhoneBookWinForm.DataModifiers
                 default: MessageBox.Show("There was an error with the SQL query string selector");
                     break;
             }
-
             return queryString;
         }
-
     }
 }

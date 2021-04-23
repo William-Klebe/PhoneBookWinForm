@@ -23,7 +23,6 @@ namespace PhoneBookWinForm
             connection.Close();
             return dataset;
         }
-
         //Dictates what type of Persona Information form should be open
         //If there's a selected ID it should open with selected data.
         internal static void OpenPersonInformationForm(int selectedID = 0)
@@ -43,8 +42,6 @@ namespace PhoneBookWinForm
                 personinformation.ShowDialog();
             }
         }
-        //Return the text from a RichTextBox
-
         //prevents accidental closing of main form.
         //This is dumb broken right now.
         internal static void CloseCancel()

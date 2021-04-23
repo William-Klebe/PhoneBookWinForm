@@ -20,12 +20,10 @@ namespace PhoneBookWinForm
         {
             InitializeComponent();
         }
-
         //Grab data if dgvPersonInfo row item was clicked
         public PersonInformation(int selectedID)
         {
             InitializeComponent();
-
             //declare connection and command objects for method arguments on load.
             SqlConnection connection = new SqlConnection(DataStrings.SqlConnectionString());
             SqlCommand command = new SqlCommand(DataStrings.PersonInformationDataQuery(selectedID), connection);
@@ -61,7 +59,7 @@ namespace PhoneBookWinForm
                 connection.Close();
             }
         }
-        
+
         //Save strip menu item PersonInformation
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -94,13 +92,11 @@ namespace PhoneBookWinForm
                 MessageBox.Show("There was an error with the Save menu item", "Incorrect file feature", MessageBoxButtons.OK);
             }
         }
-
         //Update strip menu item PersonInformation
         private void updateToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (!String.IsNullOrEmpty(txtPersonalInfo0.Text))
             {
-
                 //declare connection and command objects for method arguments on click.
                 using (SqlConnection connection = new SqlConnection(DataStrings.SqlConnectionString()))
                 using (SqlCommand command = connection.CreateCommand())
@@ -132,7 +128,6 @@ namespace PhoneBookWinForm
                 MessageBox.Show("If this is a new entry, you need to use the \"File > Save\" button.", "Incorrect file feature", MessageBoxButtons.OK);
             }
         }
-
         //Delete strip menu item PersonalInformation
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -156,14 +151,6 @@ namespace PhoneBookWinForm
                 //MessageBox.Show("If this is a new entry, you need to use the \"File > Save\" button.", "Incorrect file feature", MessageBoxButtons.OK);
             }
         }
-
-        //private static List<string> grabTxtBoxInput()
-        //{
-        //    List<string> txtBoxInput = new List<string>();
-        //    foreach(Control x in PersonInformation.Controls)
-        //    return txtBoxInput;
-        //}
-
         //Secrets.
         private void pictureBox1_Click(object sender, EventArgs e)
         {

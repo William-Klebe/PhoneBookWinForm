@@ -44,7 +44,6 @@ namespace PhoneBookWinForm
                 //duh
                 MessageBox.Show("Connection failed.");
             }
-
         }
         //click cell to generate form with row attributes.
         private void dgvPersonInfo_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
