@@ -35,14 +35,14 @@ namespace PhoneBookWinForm
                 {
                     dgvPersonInfo.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 }
-                dgvPersonInfo.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
-
-                MessageBox.Show("Connection successful.");
+                dgvPersonInfo.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
+                //Debug tool
+                //MessageBox.Show("Connection successful.");
             }
             catch
             {
                 //duh
-                MessageBox.Show("Connection failed.");
+                MessageBox.Show("Connection to database failed.");
             }
         }
         //click cell to generate form with row attributes.
